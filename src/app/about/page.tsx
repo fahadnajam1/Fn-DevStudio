@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import { Sparkles, Star, Rocket, Shield, Cpu, User, ArrowRight } from "lucide-react";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
-import CustomCursor from "../../components/ui/CustomCursor";
 import GlowCard from "../../components/ui/GlowCard";
 import MagneticButton from "../../components/ui/MagneticButton";
 import useScrollReset from "../useScrollReset";
+import dynamic from "next/dynamic";
+
+const CustomCursor = dynamic(() => import("../../components/ui/CustomCursor"), { ssr: false });
 
 export default function About() {
   useScrollReset();

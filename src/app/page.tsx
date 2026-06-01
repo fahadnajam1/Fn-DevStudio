@@ -5,14 +5,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Code, Brain, ShoppingBag, LayoutTemplate, Zap, ShieldCheck, HeartHandshake, Sparkles, Star } from "lucide-react";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import CustomCursor from "../components/ui/CustomCursor";
-import OrbCanvas from "../components/ui/OrbCanvas";
 import GlowCard from "../components/ui/GlowCard";
 import MagneticButton from "../components/ui/MagneticButton";
 import SpeedSlider from "../components/ui/SpeedSlider";
-import AiSandbox from "../components/home/AiSandbox";
 import React from "react";
 import useScrollReset from "./useScrollReset";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const CustomCursor = dynamic(() => import("../components/ui/CustomCursor"), { ssr: false });
+const AiSandbox = dynamic(() => import("../components/home/AiSandbox"), { ssr: false });
 
 export default function Home() {
   useScrollReset();
@@ -103,14 +105,17 @@ export default function Home() {
               scale: backgroundScale,
             }}
           >
-            <div
+            <Image
+              src="/bgimage.png"
+              alt="Stellar Web Solutions Background"
+              fill
+              priority
+              quality={85}
               style={{
-                position: "absolute",
-                inset: 0,
-                backgroundImage: "url('/bgimage.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                objectFit: "cover",
+                objectPosition: "center",
               }}
+              sizes="100vw"
             />
           </motion.div>
         </div>

@@ -6,10 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, ArrowLeft, Mail, Phone, Sparkles } from "lucide-react";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
-import CustomCursor from "../../components/ui/CustomCursor";
 import GlowCard from "../../components/ui/GlowCard";
 import MagneticButton from "../../components/ui/MagneticButton";
 import useScrollReset from "../useScrollReset";
+import dynamic from "next/dynamic";
+
+const CustomCursor = dynamic(() => import("../../components/ui/CustomCursor"), { ssr: false });
 
 export default function Contact() {
   useScrollReset();
